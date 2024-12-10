@@ -41,7 +41,7 @@ jobs:
 
 
     - run: npm i
-    
+
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -58,6 +58,11 @@ jobs:
           node-version: "${{ needs.build.outputs.NVMRC }}"
 
       - run: npm i
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
       - name: Run ${{ matrix.test-suite }}
         run: npm run ${{ matrix.test-suite }}
