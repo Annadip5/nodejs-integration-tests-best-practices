@@ -4,12 +4,20 @@ on:
   push:
     branches:
       - '*'
+    paths:
+      - 'src/**' 
+      - 'tests/**' 
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+    paths:
+      - 'src/**' 
+      - 'tests/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && (github.event.head_commit.changed_files > 0) && contains(github.event.head_commit.modified, 'src/') }}
 
     steps:
     - uses: actions/checkout@v2
@@ -44,6 +52,7 @@ jobs:
     strategy:
       matrix:
         test-suite: [ "test", "test:nestjs", "test:mocha" ]
+    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.modified, 'tests/') }}
 
     steps:
       - uses: actions/checkout@v2
