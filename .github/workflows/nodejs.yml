@@ -31,6 +31,14 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y docker-compose
 
+    - name: Cache Node.js modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
     - run: npm ci
     - run: npm test
     - run: npm run test:nestjs
