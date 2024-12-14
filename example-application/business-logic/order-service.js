@@ -1,3 +1,6 @@
+//test de fichier modifié pour savoir si le pipeline fonctionne
+
+
 const util = require('util');
 const axios = require('axios');
 const mailer = require('../libraries/mailer');
