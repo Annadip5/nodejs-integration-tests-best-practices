@@ -16,7 +16,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' && (github.event.head_commit.changed_files > 0) && contains(github.event.head_commit.modified, 'example-application/') }}
-
     steps:
     - uses: actions/checkout@v2
 
