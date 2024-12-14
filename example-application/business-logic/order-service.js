@@ -1,6 +1,3 @@
-//test de fichier modifié pour savoir si le pipeline fonctionne
-
-
 const util = require('util');
 const axios = require('axios');
 const mailer = require('../libraries/mailer');
@@ -8,6 +5,7 @@ const axiosRetry = require('axios-retry');
 const OrderRepository = require('../data-access/order-repository');
 const { AppError } = require('../error-handling');
 const MessageQueueClient = require('../libraries/message-queue-client');
+//hello test
 
 const axiosHTTPClient = axios.create();
 axiosRetry(axiosHTTPClient, { retries: 3 });
